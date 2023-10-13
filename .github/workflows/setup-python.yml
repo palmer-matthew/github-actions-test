@@ -1,0 +1,23 @@
+name: setup-python
+run-name: ${{ github.actor }} is learning how to Setup Python With Github Actions
+on: [push]
+jobs:
+    python-setup:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            - name: Setup Python Environment
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.11'
+                architecture: x64
+            - name: Install Random Python Dependencies
+              run: pip install wheels pex mysql-connector-python
+            - name: List Installed Dependecies
+              run: pip list
+            - name: Execute Python Code
+              run: python hello_world.py
+            - name: Display Python Version
+              run: python --version
+
