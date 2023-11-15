@@ -18,7 +18,7 @@ jobs:
               run: python --version
 
             - name: Install Random Python Dependencies
-              run: pip install wheel pex mysql-connector-python
+              run: pip install wheel pex mysql-connector-python pandas
 
             - name: List Installed Dependecies
               run: pip list
