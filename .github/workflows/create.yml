@@ -55,9 +55,9 @@ jobs:
               id: download
               with: 
                 name: hello.pex
-                path: download/hello-${{ github.ref_name }}.pex
-            
+                path: hello-${{ github.ref_name }}.pex
+                
             - name: Create a new release for stable
               uses: softprops/action-gh-release@v1
               with:
-                files: download/*
+                files: hello-${{ github.ref_name }}.pex
