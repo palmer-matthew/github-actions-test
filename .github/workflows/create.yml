@@ -4,7 +4,7 @@ on:
         tags: 'v*.*.*'
 
     pull_request:
-        branches: stable
+        branches: main
 
 jobs:
     build-stable-pex-file:
@@ -30,13 +30,13 @@ jobs:
               run: mkdir dist/
 
             - name: Build Pex File From Stable Code
-              run: pex --python=python -f $PWD -r hello/requirements.txt hello -e hello.main -o dist/hello-${{ github.ref }}.pex -v
+              run: pex --python=python -f $PWD -r hello/requirements.txt hello -e hello.main -o dist/hello-${{ github.ref_name }}.pex -v
             
             - name: Upload Pex File as Artifact
               uses: actions/upload-artifact@v3
               with:
                 name: hello.pex
-                path: dist/hello-${{ github.ref }}.pex
+                path: dist/hello-${{ github.ref_name }}.pex
     
     create-new-release:
         name: Create New Release
@@ -59,4 +59,4 @@ jobs:
             - name: Create a new release for stable
               uses: softprops/action-gh-release@v1
               with:
-                files: download/hello-${{ github.ref }}.pex
+                files: download/hello-${{ github.ref_name }}.pex
