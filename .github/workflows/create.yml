@@ -62,10 +62,10 @@ jobs:
           - name: Print Working Directory
             run: pwd
           
-          - name: List download directory
-            run: ls download/
+          - name: List Working Directory
+            run: ls
               
           - name: Create a new release for stable
             uses: softprops/action-gh-release@v1
             with:
-              files: hello-${{ github.ref_name }}.pex
+              files: ./hello-${{ github.ref_name }}.pex
