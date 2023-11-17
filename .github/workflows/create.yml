@@ -2,8 +2,6 @@ name: create-new-release
 run-name: create-release-${{ github.ref_name }}
 on:
     push:
-      branches:
-        - main
       tags: 'v*.*.*'
 
     pull_request:
@@ -58,6 +56,9 @@ jobs:
             with: 
               name: hello.pex
               path: ./download/hello-${{ github.ref_name }}.pex
+          
+          - name: List structure of Download Folder
+            run: ls -al download/ 
               
           - name: Create a new release for stable
             uses: softprops/action-gh-release@v1
