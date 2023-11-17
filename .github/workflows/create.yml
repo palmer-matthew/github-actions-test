@@ -57,15 +57,9 @@ jobs:
             id: download
             with: 
               name: hello.pex
-              path: hello-${{ github.ref_name }}.pex
-          
-          - name: Print Working Directory
-            run: pwd
-          
-          - name: List Working Directory
-            run: ls
+              path: ./download/hello-${{ github.ref_name }}.pex
               
           - name: Create a new release for stable
             uses: softprops/action-gh-release@v1
             with:
-              files: ./hello-${{ github.ref_name }}.pex
+              files: ./download/hello-${{ github.ref_name }}.pex
