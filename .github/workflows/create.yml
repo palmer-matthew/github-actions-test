@@ -55,7 +55,7 @@ jobs:
             id: download
             with: 
               name: hello.pex
-              path: ./download/hello-${{ github.ref_name }}.pex
+              path: ./download/
           
           - name: List structure of Download Folder
             run: ls -al download/ 
