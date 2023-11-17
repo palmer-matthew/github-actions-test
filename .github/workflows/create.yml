@@ -1,4 +1,6 @@
 name: create-new-release
+permissions:
+  contents: write
 run-name: create-release-${{ github.ref_name }}
 on:
     push:
@@ -52,13 +54,9 @@ jobs:
 
           - name: Download Pex File 
             uses: actions/download-artifact@v3
-            id: download
             with: 
               name: hello.pex
               path: ./download/
-          
-          - name: List structure of Download Folder
-            run: ls -al download/ 
               
           - name: Create a new release for stable
             uses: softprops/action-gh-release@v1
